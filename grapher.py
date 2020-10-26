@@ -33,10 +33,6 @@ def grapher(in_n, out_n, nodes, edges):
 			G.add_edge(i[1], j, weight=6)
 			# line_size.append(3)
 
-	print("Nodes of graph: ")
-	print(G.nodes())
-	print("Edges of graph: ")
-	print(G.edges())
 	nx.draw(G, with_labels=True, node_color=colour_map, node_size=size, arrowsize=20, pos=nx.spring_layout(G, k=7))
-	plt.savefig("path_graph1.png")
+	# plt.savefig("path_graph1.png")
 	plt.show()

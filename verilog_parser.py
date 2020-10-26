@@ -47,7 +47,7 @@ def parser(file_):
 			_output = line[0]
 			_input = line[1:]
 
-			print(_output, _input)
+			# print(_output, _input)
 			# checking if a wire exists in wires with name _output and adding its edge parameters
 			if(_output in output_nodes):
 				wires.append([_output, gate, [_output]])
@@ -80,17 +80,17 @@ def parser(file_):
 
 		line = v_file.readline()
 
-	print("\nINPUT:")
-	print(input_nodes)
+	# print("\nINPUT:")
+	# print(input_nodes)
 
-	print("\nOUTPUT:")
-	print(output_nodes)
+	# print("\nOUTPUT:")
+	# print(output_nodes)
 
-	print("\nGATES:")
-	print(gates)
+	# print("\nGATES:")
+	# print(gates)
 
-	print("\nWIRES: ")
-	for i in wires:
-		print(i)
+	# print("\nWIRES: ")
+	# for i in wires:
+	# 	print(i)
 
 	return input_nodes, output_nodes, gates, wires
