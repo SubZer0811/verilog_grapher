@@ -8,7 +8,7 @@ def parser(file_):
 	input_nodes = []		# all input ports are taken as nodes to visualize better
 	output_nodes = []		# all output ports are taken as nodes to visualize better
 	gates = []				# nodes
-	wires = {}				# [edges][(tail, head)] here the first index is the name of the wire; 
+	wires = []				# [edges][(tail, head)] here the first index is the name of the wire; 
 							# tail and head are the nodes to which the edge is connected to
 
 	line = v_file.readline()
@@ -50,27 +50,33 @@ def parser(file_):
 			print(_output, _input)
 			# checking if a wire exists in wires with name _output and adding its edge parameters
 			if(_output in output_nodes):
-				wires[_output] = (gate, _output)
+				wires.append([_output, gate, [_output]])
 			else:
-				try:
-					wires[_output][0] = gate
-				except:
-					wires[_output] = (gate, ' ')
-					# print("test")
+				wires.append([_output, gate, []])
+					
 			
 			for i in _input:
 				# print(i, end='')
 				if(i in input_nodes):
-					wires[i] = (i, gate)
-				else:
-					try:
-						wires[i] = (wires[i][0], gate)
-						# print("exists")
-					except KeyError:
-						wires[i] = (' ', gate)
-						# print("does not exist")
+					flag = 0
+					for j in wires:
+						if(j[0] == i):
+							j[2].append(gate)
+							flag = 1
+							break
+					if(flag == 0):
+						wires.append([i, i, [gate]])
 
-			# print()
+				else:
+					flag = 0
+					for j in wires:
+						if(j[0] == i):
+							j[2].append(gate)
+							flag = 1
+							break
+
+					if(flag == 0):
+						wires.append([i, ' ', [gate]])
 
 		line = v_file.readline()
 
@@ -85,6 +91,6 @@ def parser(file_):
 
 	print("\nWIRES: ")
 	for i in wires:
-		print(i, wires[i])
+		print(i)
 
 	return input_nodes, output_nodes, gates, wires
