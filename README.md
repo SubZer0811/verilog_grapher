@@ -6,9 +6,8 @@ Run the following command:
 ```
 python3 main.py <path-to-verilog-file>
 ```
-<br>
-![Graphical representation of a Full Adder](example.png)
-<br>
+![Graphical Representation of a Full Adder](example.png)
+Graphical Representation of a Full Adder
 
 ## Improvements!
 1. Improve the parser
