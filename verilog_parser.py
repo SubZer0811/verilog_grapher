@@ -14,16 +14,19 @@ def parser(file_, verbose=0):
 	line = v_file.readline()
 	while (line):
 		
+		# remove all leading spaces
+		line = line.lstrip()
+
 		# find all the input ports
-		if(line.find('input') == 0):
-			line = line.split(sep=',')
-			line = [x.strip('input,;\n ') for x in line]
+		if(line.startswith('input')):
+			line = line.lstrip('input').split(sep=',')
+			line = [x.strip(',;\n ') for x in line]
 			[input_nodes.append(x) for x in line]
 
 		# find all the output ports
-		elif(line.find('output') == 0):
-			line = line.split(sep=',')
-			line = [x.strip('output,;\n ') for x in line]
+		elif(line.startswith('output')):
+			line = line.lstrip('output').split(sep=',')
+			line = [x.strip(',;\n ') for x in line]
 			[output_nodes.append(x) for x in line]
 
 		# find all the connections and gates

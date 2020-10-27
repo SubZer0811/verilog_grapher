@@ -26,12 +26,11 @@ def grapher(in_n, out_n, nodes, edges):
 			colour_map.append('green')
 		else:
 			colour_map.append('blue')
-		size.append(100*len(node))
+		size.append(300*len(node))
 
 	for i in edges:
 		for j in i[2]:
 			G.add_edge(i[1], j, weight=6)
-			# line_size.append(3)
 
 	nx.draw(G, with_labels=True, node_color=colour_map, node_size=size, arrowsize=20, pos=nx.spring_layout(G, k=7))
 	# plt.savefig("path_graph1.png")
