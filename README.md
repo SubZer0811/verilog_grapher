@@ -1,5 +1,5 @@
 # verilog_grapher
-Visualize your gate-level verilog code as a directed graph. **networkx** library was used to draw the graphs
+Visualize your **gate-level verilog code** as a directed graph. **networkx** library was used to draw the graphs
 
 ## Running
 Run the following command:

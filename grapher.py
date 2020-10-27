@@ -3,8 +3,10 @@ import matplotlib.pyplot as plt
 import verilog_parser
 
 ''' 
-in_n: input nodes; out_n: output nodes; 
-nodes: gates; edges; connections
+in_n: input nodes; 
+out_n: output nodes; 
+nodes: gates; 
+edges: wire connections
 '''
 
 def grapher(in_n, out_n, nodes, edges):
