@@ -1,7 +1,7 @@
 def sanitize(x):
 	return x.strip(',;\n ()')
 
-def parser(file_):
+def parser(file_, verbose=0):
 	v_file = open(file_, 'r')
 
 	GATES = ['not', 'and', 'or', 'nand', 'nor', 'xor', 'xnor', 'buf']
@@ -80,17 +80,18 @@ def parser(file_):
 
 		line = v_file.readline()
 
-	# print("\nINPUT:")
-	# print(input_nodes)
+	if(verbose):
+		print("\nINPUT:")
+		print(input_nodes)
 
-	# print("\nOUTPUT:")
-	# print(output_nodes)
+		print("\nOUTPUT:")
+		print(output_nodes)
 
-	# print("\nGATES:")
-	# print(gates)
+		print("\nGATES:")
+		print(gates)
 
-	# print("\nWIRES: ")
-	# for i in wires:
-	# 	print(i)
+		print("\nWIRES: ")
+		for i in wires:
+			print(i)
 
 	return input_nodes, output_nodes, gates, wires
