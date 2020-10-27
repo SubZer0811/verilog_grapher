@@ -94,7 +94,9 @@ def parser(file_, verbose=0):
 		print(gates)
 
 		print("\nWIRES: ")
+
+		print("{:<15}{:<10}{}".format("Wire_Groups", "Tail", "Head"))
 		for i in wires:
-			print(i)
+			print("{:<15}{:<10}{}".format(i[0], i[1], i[2]))
 
 	return input_nodes, output_nodes, gates, wires
