@@ -55,7 +55,16 @@ def parser(file_, verbose=0):
 			if(_output in output_nodes):
 				wires.append([_output, gate, [_output]])
 			else:
-				wires.append([_output, gate, []])
+				flag = 0
+				for i in wires:
+					if(i[0] == _output):
+						i[1] = gate
+						flag = 1
+						break
+				
+				if(flag == 0):
+					wires.append([_output, gate, []])
+					
 					
 			
 			for i in _input:
