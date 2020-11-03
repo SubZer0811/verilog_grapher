@@ -28,7 +28,7 @@ def grapher(in_n, out_n, nodes, edges, verbose=0):
 			colour_map.append('green')
 		else:
 			colour_map.append('blue')
-		size.append(300*len(node))
+		size.append(530*len(node))
 
 	for i in edges:
 		for j in i[2]:
