@@ -11,4 +11,4 @@ if __name__ == "__main__":
 	args = cli.parse_args()
 
 	in_n, out_n, nodes, edges = parser(args.verilog_file, verbose=args.verbose)
-	grapher(in_n, out_n, nodes, edges)
+	grapher(in_n, out_n, nodes, edges, verbose=args.verbose)

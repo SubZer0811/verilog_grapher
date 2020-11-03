@@ -93,19 +93,30 @@ def parser(file_, verbose=0):
 		line = v_file.readline()
 
 	if(verbose):
-		print("\nINPUT:")
+		import os
+		size = os.get_terminal_size()
+		
+		[print('_', end='') for i in range(int((size.columns-5)/2))]
+		print("NODES", end='')
+		[print('_', end='') for i in range(int((size.columns-5)/2))]
+		print("\n\nINPUT: ", end='')
 		print(input_nodes)
 
-		print("\nOUTPUT:")
+		print("\nOUTPUT: ", end='')
 		print(output_nodes)
 
-		print("\nGATES:")
+		print("\nGATES: ", end='')
 		print(gates)
-
-		print("\nWIRES: ")
-
+		print("")
+		
+		[print('_', end='') for i in range(int((size.columns-5)/2))]
+		print("EDGES", end='')
+		[print('_', end='') for i in range(int((size.columns-5)/2))]
+		
+		print("\n\nWIRES: ")
 		print("{:<15}{:<10}{}".format("Wire_Groups", "Tail", "Head"))
 		for i in wires:
-			print("{:<15}{:<10}{}".format(i[0], i[1], i[2]))
+			print(("{:<11}|{:^11}|{}").format(i[0],i[1],str(i[2])[1:-1]))
+		
 
 	return input_nodes, output_nodes, gates, wires

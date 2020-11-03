@@ -9,7 +9,7 @@ nodes: gates;
 edges: wire connections
 '''
 
-def grapher(in_n, out_n, nodes, edges):
+def grapher(in_n, out_n, nodes, edges, verbose=0):
 
 	# in_n, out_n, nodes, edges = verilog_parser.parser(file_)     
 
@@ -33,6 +33,23 @@ def grapher(in_n, out_n, nodes, edges):
 	for i in edges:
 		for j in i[2]:
 			G.add_edge(i[1], j, weight=6)
+
+	if(verbose):
+		import os
+		term_size = os.get_terminal_size()
+		
+		print("\n")
+		[print('_', end='') for i in range(int((term_size.columns-5)/2))]
+		print("PATHS", end='')
+		[print('_', end='') for i in range(int((term_size.columns-5)/2))]
+		print("\n")
+		
+		for i in in_n:
+			for j in out_n:
+				for path in nx.all_simple_paths(G, source=i, target=j):
+					print(path)
+
+		print()
 
 	nx.draw(G, with_labels=True, node_color=colour_map, node_size=size, arrowsize=20, pos=nx.spring_layout(G, k=7))
 	# plt.savefig("path_graph1.png")
